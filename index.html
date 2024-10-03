@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <style>
+        *{
+    box-sizing: border-box;
+}
+.Calculator{
+    width: 50%;
+    min-width: 320px;
+    max-width: 640px;
+    max-height: 640px;
+    margin: 100px auto;
+}
+.output{
+    width: 100%;
+    padding: 1%;
+    grid-template-columns: auto auto;
+    border: solid #005234;
+    border-bottom: none;
+    background-color: darkseagreen;
+    border-radius: 10px 10px 0px 0px;
+}
+.output textarea{
+    width: 49.25%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: white;
+    border: solid #005234;
+    border-radius: 10px;
+}
+button{
+    width: 22%;
+    margin: 1%;
+    padding: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    background-color: #04AA6D;
+    border: solid #005234;
+    border-radius: 10px;
+    transition: 5ms;
+}
+button:hover{
+    background-color: #005234;
+}
+.numbers{
+    width: 100%;
+    padding: 1%;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    float: left;
+    background-color: darkseagreen;
+    border: solid #005234;
+    border-radius: 0px 0px 10px 10px;
+}
+    </style>
+    <script>
+                let a,b,c;
+        let values1 = "";
+        let values2 = "";
+        let operation = true;
+        let simbol;
+
+        function addNmbr(z){
+            this.z = z;
+            if(operation == true){
+                    values1 = values1 + z;
+                    document.getElementById("valor").innerHTML = values1; //convert to float an add in id valor
+                    
+                
+            }else{ 
+                    values2 = values2 + z;
+                    document.getElementById("valor").innerHTML = values2; //convert to float an add in id valor
+            }
+        }
+        
+        /*suma*/
+
+        function oprnt (z){
+            this.z = z;
+            operation = false;
+            switch (z){
+                case 4:
+                    document.getElementById("valor").innerHTML = "+";
+                break;
+                case 3:
+                    document.getElementById("valor").innerHTML = "-";
+                break;
+                case 2:
+                    document.getElementById("valor").innerHTML = "*";
+                break;
+                case 1:
+                    document.getElementById("valor").innerHTML = "/";
+                break;
+            }
+            simbol = z;
+        }
+
+        function result(){
+            a = parseFloat(values1);
+            b = parseFloat(values2);
+            switch (simbol){
+                case 4:
+                    document.getElementById("result").innerHTML = c = (a+b);
+                    document.getElementById("valor").innerHTML = values1 + " + " + values2;
+                break;
+                case 3:
+                    document.getElementById("result").innerHTML = c = (a-b);
+                    document.getElementById("valor").innerHTML = values1 + " - " + values2;
+                break;
+                case 2:
+                    document.getElementById("result").innerHTML = c = (a*b);
+                    document.getElementById("valor").innerHTML = values1 + " * " + values2;
+                break;
+                case 1:
+                    document.getElementById("result").innerHTML = c = (a/b);
+                    document.getElementById("valor").innerHTML = values1 + " / " + values2;
+                break;
+            }
+            values1 = c.toString();
+            values2 = "";
+            operation = true;
+        }
+
+        function reset1(){
+            values1 = "";
+            values2 = "";
+            document.getElementById("valor").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+    <div class="Calculator">
+        <div class="output">
+            <textarea id="valor" disabled>Opetation</textarea>
+            <textarea id="result">Result</textarea>
+        </div>
+        <div class="numbers">
+            <button onclick="addNmbr(1)">1</button>
+            <button onclick="addNmbr(2)">2</button>
+            <button onclick="addNmbr(3)">3</button>
+                <button onclick="oprnt(1)" class="op1">/</button>
+            <button onclick="addNmbr(4)">4</button>
+            <button onclick="addNmbr(5)">5</button>
+            <button onclick="addNmbr(6)">6</button>
+                <button onclick="oprnt(2)" class="op2">*</button>
+            <button onclick="addNmbr(7)">7</button>
+            <button onclick="addNmbr(8)">8</button>
+            <button onclick="addNmbr(9)">9</button>
+                <button onclick="oprnt(3)" class="op3">-</button>
+            <button onclick="addNmbr(0)">0</button>
+            <button onclick="reset1()">C</button>
+            <button onclick="result()">=</button>
+                <button onclick="oprnt(4)" class="op4">+</button>
+        </div>
+    </div>
+</body>
+</html>
