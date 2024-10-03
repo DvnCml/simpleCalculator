@@ -65,7 +65,7 @@ button:hover{
 }
     </style>
     <script>
-        let a,b,c;
+                let a,b,c;
         let values1 = "";
         let values2 = "";
         let operation = true;
@@ -75,7 +75,9 @@ button:hover{
             this.z = z;
             if(operation == true){
                     values1 = values1 + z;
-                    document.getElementById("valor").innerHTML = values1; //convert to float an add in id valor             
+                    document.getElementById("valor").innerHTML = values1; //convert to float an add in id valor
+                    
+                
             }else{ 
                     values2 = values2 + z;
                     document.getElementById("valor").innerHTML = values2; //convert to float an add in id valor
@@ -100,6 +102,9 @@ button:hover{
                 case 1:
                     document.getElementById("valor").innerHTML = "/";
                 break;
+                default:
+                    document.getElementById("valor").innerHTML = "";
+                break
             }
             simbol = z;
         }
@@ -111,19 +116,26 @@ button:hover{
                 case 4:
                     document.getElementById("result").innerHTML = c = (a+b);
                     document.getElementById("valor").innerHTML = values1 + " + " + values2;
+                    simbol = "";
                 break;
                 case 3:
                     document.getElementById("result").innerHTML = c = (a-b);
                     document.getElementById("valor").innerHTML = values1 + " - " + values2;
+                    simbol = "";
                 break;
                 case 2:
                     document.getElementById("result").innerHTML = c = (a*b);
                     document.getElementById("valor").innerHTML = values1 + " * " + values2;
+                    simbol = "";
                 break;
                 case 1:
                     document.getElementById("result").innerHTML = c = (a/b);
                     document.getElementById("valor").innerHTML = values1 + " / " + values2;
+                    simbol = "";
                 break;
+                default:
+                    document.getElementById("result").innerHTML = c = (a);
+                break
             }
             values1 = c.toString();
             values2 = "";
