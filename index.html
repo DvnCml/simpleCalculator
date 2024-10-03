@@ -12,7 +12,7 @@
 }
 .Calculator{
     width: 50%;
-    min-width: 360px;
+    min-width: 320px;
     max-width: 640px;
     max-height: 640px;
     margin: 100px auto;
@@ -65,9 +65,9 @@ button:hover{
 }
     </style>
     <script>
-                let a,b,c;
-        let values1 = "";
-        let values2 = "";
+        let a,b,c;
+        let values1 = "0";
+        let values2 = "0";
         let operation = true;
         let simbol;
 
@@ -84,8 +84,6 @@ button:hover{
             }
         }
         
-        /*suma*/
-
         function oprnt (z){
             this.z = z;
             operation = false;
@@ -135,6 +133,7 @@ button:hover{
                 break;
                 default:
                     document.getElementById("result").innerHTML = c = (a);
+                    document.getElementById("valor").innerHTML = values1;
                 break
             }
             values1 = c.toString();
@@ -143,8 +142,8 @@ button:hover{
         }
 
         function reset1(){
-            values1 = "";
-            values2 = "";
+            values1 = "0";
+            values2 = "0";
             document.getElementById("valor").innerHTML = "";
             document.getElementById("result").innerHTML = "";
         }
